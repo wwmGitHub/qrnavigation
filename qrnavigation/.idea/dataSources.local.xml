@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="974bc165-5017-4ec1-bf61-7c90b80ac8c5">
+      <user-name>root</user-name>
+      <user-password>dfc0dfcedfc8dfc9df90dfc7dfd3dfd9dfdbdfc6df90df85df85dfc6dfc5dfc9dfcbdfc6dfc2dfc5dfd9dfdedf90df99df99df9adf9cdf85dfdbdfd8dfc9dfc5dfcedfcfdfc7dfcbdfc1dfcfdf95dfdfdfd9dfcfdfffdfc4dfc3dfc9dfc5dfcedfcfdf97dfdedfd8dfdfdfcfdf8cdfc9dfc2dfcbdfd8dfcbdfc9dfdedfcfdfd8dff9dfcfdfdedff8dfcfdfd9dfdfdfc6dfdedfd9df97dfffdffedfecdf87df92df8cdfd0dfcfdfd8dfc5dfeedfcbdfdedfcfdffedfc3dfc7dfcfdfe8dfcfdfc2dfcbdfdcdfc3dfc5dfd8df97dfc9dfc5dfc4dfdcdfcfdfd8dfdedffedfc5dfe4dfdfdfc6dfc6</user-password>
+    </data-source>
+    <data-source name="config" uuid="ff32dde5-a1be-4965-a0a1-eede9594032f">
+      <user-name>root</user-name>
+      <user-password>df9bdfdbdfcbdfd0</user-password>
+      <schema-pattern>qrcodemake.*</schema-pattern>
+      <default-schemas>qrcodemake.*</default-schemas>
+    </data-source>
+  </component>
+</project>

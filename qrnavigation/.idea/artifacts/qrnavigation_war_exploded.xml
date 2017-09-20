@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="qrnavigation:war exploded">
+    <output-path>D:/apache-tomcat-7.0.81-windows-x86/apache-tomcat-7.0.81/webapps/qrnavigation</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="qrnavigation" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="qrnavigation/web/Web" />
+      <element id="dir-copy" path="$PROJECT_DIR$/WebRoot" />
+    </root>
+  </artifact>
+</component>
