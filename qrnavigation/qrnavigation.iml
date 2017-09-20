@@ -49,11 +49,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="jdk" jdkName="1.7 (1)" jdkType="JavaSDK" />
-    <orderEntry type="library" name="com.genuitec.runtime.library/com.genuitec.generic_6.0" level="application" />
-    <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.web.container" level="application" />
-    <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
-    <orderEntry type="library" name="com.genuitec.runtime.library/com.genuitec.jstl_1.2" level="application" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

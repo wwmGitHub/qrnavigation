@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 
 @Service
 public class UserServiceImpl implements UserServiceI{
@@ -55,20 +56,21 @@ public class UserServiceImpl implements UserServiceI{
      */
     @Override
     public List<UserModel> getUserList() {
-       List<User> list= baseDaoI.find("from User");
+        List<User> list= baseDaoI.find("from User");
         List<UserModel> umList=new ArrayList<>();
         //过滤系统账号
-
-
-        for(int  i=0;i<=list.size();i++){
-            System.out.println(list.get(i).getUserLoginName());
-            if (list.get(i).getUserLoginName().equals("admin")){
-                list.remove(list.get(i));
-               // continue;
+        ListIterator iterator=list.listIterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+            User  user= (User) iterator.next();
+            if (user.getUserLoginName().equals("admin")){
+                iterator.remove();
             }
-            UserModel u = new UserModel();
-            BeanUtils.copyProperties(list.get(i), u);
-            umList.add(u);
+            if (user!=null) {
+                UserModel u = new UserModel();
+                BeanUtils.copyProperties(user, u);
+                umList.add(u);
+            }
         }
 
         return umList;

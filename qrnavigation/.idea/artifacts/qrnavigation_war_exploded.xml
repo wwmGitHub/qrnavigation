@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="qrnavigation:war exploded">
-    <output-path>D:/apache-tomcat-7.0.81-windows-x86/apache-tomcat-7.0.81/webapps/qrnavigation</output-path>
+    <output-path>D:/jeesite-master-v/apache-tomcat-7.0.79/webapps/qrnavigation</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
