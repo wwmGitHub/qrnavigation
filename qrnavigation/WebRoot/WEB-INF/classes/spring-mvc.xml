@@ -85,6 +85,7 @@
 						<value>/productionController/editProductionPage</value>
 						<value>/productionController/editProduction</value>
 						<value>/productController/*</value>
+						<value>/userController/*</value>
 					</list>
 				</property>
 			</bean>

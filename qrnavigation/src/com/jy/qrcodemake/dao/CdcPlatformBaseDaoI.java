@@ -47,7 +47,7 @@ public interface CdcPlatformBaseDaoI<T> {
 	 * @param o
 	 *            对象
 	 */
-	public void saveOrUpdate(T o);
+	public void saveOrUpdate(T o) throws Exception;
 
 	/**
 	 * 通过主键获得对象

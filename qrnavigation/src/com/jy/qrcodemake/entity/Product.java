@@ -1,10 +1,7 @@
 package com.jy.qrcodemake.entity;
 // default package
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Product entity. @author MyEclipse Persistence Tools
@@ -23,7 +20,17 @@ public class Product implements java.io.Serializable {
 	private String scenicspotLink;
 	private String qrcodeParam;
 	private String scenicspotLinkContent;
+	private User user;
 
+	@OneToOne(mappedBy="product",targetEntity = User.class)
+	@JoinColumn(name = "product_id")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	// Constructors
 
 	/** default constructor */
@@ -120,5 +127,8 @@ public class Product implements java.io.Serializable {
 	public void setScenicspotLinkContent(String scenicspotLinkContent) {
 		this.scenicspotLinkContent = scenicspotLinkContent;
 	}
+
+
+
 
 }

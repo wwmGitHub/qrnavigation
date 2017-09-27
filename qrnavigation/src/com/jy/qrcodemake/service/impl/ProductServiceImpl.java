@@ -3,6 +3,7 @@ package com.jy.qrcodemake.service.impl;
 import java.util.HashMap;
 import java.util.List;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,11 +46,17 @@ public class ProductServiceImpl implements ProductServiceI{
 	}
 	
 	public Product loadProduct(String projectId) {
+		if (projectId!=null){
 		Product project = (Product) cdcDao.loadModel(
 				Product.class, projectId);
 		Hibernate.initialize(project);
 		
 		return project;
+		}else {
+			//查询二维码级联查询出对应账号数据
+
+		}
+		return  null;
 	}
 	
 	public void updateProduct(Product s) {

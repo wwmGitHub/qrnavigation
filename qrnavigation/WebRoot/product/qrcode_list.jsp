@@ -16,8 +16,12 @@
     </script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/baseV6.css?545" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.1.12.2.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jqueryeasyui/jquery.easyui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/indexV5.css?545">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/red-pack.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jqueryeasyui/themes/bootstrap/easyui.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jqueryeasyui/themes/icon.css">
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script type="text/javascript">
 		
 		var default_open = 1;
@@ -34,7 +38,16 @@
 				});
 			}
 		}
-	</script></head><body>
+	</script>
+		<style type="text/css">
+			.hover-color:hover{
+
+				background-color: #5d5841;
+			}
+
+		</style>
+	</head>
+<body>
 	<div class="head-top-nav">
 		<div class="w1200 clearfix">
 			<div class="logo-wrap fl"><a href="#" class="logo"></a></div>
@@ -52,7 +65,7 @@
 	<div class="search-bg">
 		<div class="search-con w1200">
 			<div class="clearfix" style="padding: 44px 0 41px;">
-				<div class="search-tabBox"><ul class="search-tab">
+				<div class="search-tabBox"><ul class="search-tab"/>
 					<li class="element-search selected">关键字</li>
 				</div>
 				<div class="search element">
@@ -66,9 +79,32 @@
 		</div>
 	</div>
 
+
 	<div class="qk-index-wrapper">
 		<div class="w1200"><!-- 元素推荐 -->
 			<div id="png-floor" class="imgRecom-box pngRecom-box">
+				<table class="table table-striped">
+						<thead>
+						<tr>
+							<th>编辑</th>
+							<th>账号</th>
+							<th>备注</th>
+						</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${userList}" var="user">
+							<tr class="hover-color">
+								<td>
+									<button class="btn" onclick="fix(${user.userId})">
+										<span class="glyphicon glyphicon-pencil"></span>编辑
+									</button>
+								</td>
+								<td>${ user.userLoginName }</td>
+								<td>景区账号</td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
 				<h2 class="clearfix">
 					<em class="fl mod-icon"></em>
 					<a class="title fl" href="" target="_blank">西藏景区二维码导览已制作列表</a>
@@ -90,16 +126,18 @@
 										<a href="${pageContext.request.contextPath}/productController/export_png?id=${product.qrcodeId}" target="_blank" alt="下载二维码" class="down-big-img fr" >PNG<i></i>
 										</a>
 										<a href="${pageContext.request.contextPath}/productController/delete?id=${product.qrcodeId}" onclick="return confirm('确定删除?');" alt="删除二维码" class="favV2 nonofavV2" data="8559440">
+										X
 										</a>
 									</div>
 								</div>
 							</div>
 							<a class="img-tit" href="" >${product.scenicspotName}二维码图片</a><!--底部阴影-->
+
 							<div class="shadow-b"></div>
 						</li>
 				</c:forEach>
 				
-			</div><!-- 背景推荐 -->
+				</div><!-- 背景推荐 -->
 			</div>
 		</div>
 	</div>
@@ -108,6 +146,8 @@
 			<div class="bottom-con w1200 clearfix"><p>西藏景区二维码制作系统<a href="#" >Copyright © 2017 西藏景优</a> 
 			</div>
 		</div>
+	<%--修改窗口--%>
+
 
 	<script type="text/javascript">
 		var globaluid = 1;
@@ -121,15 +161,29 @@
 		});
 	</script>
 
-	<script type="text/javascript">        
-	var videotime;
+	<script type="text/javascript">
+		var videotime;
         var lasttime=0;
+		/*修改账号信息*/
+		function fix(id) {
+			var status=true;
+			//请求后台通过id找到对象  将对象信息显示在修改页面   然后将对象进行更新
+			$.post('${pageContext.request.contextPath}/userController/finduser', {userId:id}, function(result) {
+				var ss = JSON.parse(result);
+				console.log(result);
+				//vresult['userid']
+				//解析返回json数据
+
+			});
+		}
+
         $(window).load(function() {
 
             $("img.lazy").lazyload({
                 effect: "fadeIn",
                 threshold : 300,
             });
+
 
             //加载视频图片资源
             var imgurl = $('.intro-box .intro-pic a').attr("data-url");

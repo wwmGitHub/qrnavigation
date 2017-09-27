@@ -23,6 +23,36 @@
 		<property name="connection.password">1qaz</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<!--<property name="dialect">com.jy.qrcodemake.util.CustomMySQLServerDialect</property>-->
+
 	</session-factory>
+
+	<!--<session-factory>
+		&lt;!&ndash; 连接数据库 &ndash;&gt;
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qrcodemake?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">1qaz</property>
+		&lt;!&ndash; 其他配置 &ndash;&gt;
+		&lt;!&ndash; 方言：用来指定hibernate操作的数据库
+	     方言的作用是：根据方言设置值生成对应的查询语句，因为每个数据库支持的查询是不一样的
+		Hibernate如果不设置方言，可以进行正常的增删改语句的生成&ndash;&gt;
+
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		&lt;!&ndash; hibernate操作对象用来执行操作数据库表，在控制台中显示sql语句 &ndash;&gt;
+		<property name="hibernate.show_sql">true</property>
+		&lt;!&ndash;
+			 hibernate.hbm2ddl.auto:用来建立对象和表的关联
+			 * create：每次都会先删除表，再创建表，问题不能保存数据
+			 * none：默认值：有表的时候，可以直接操作，没有表就会报错，默认向表中追加数据
+			 * update：没有表就创建表，有表就直接操作数据
+		 &ndash;&gt;
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		&lt;!&ndash; 加载映射文件
+				1:class="cn.itcast.a_primer.Customer"（要求类和映射文件放在同一个目录下，而且文件名要相同）
+				2:resource=cn/itcast/a_primer/Customer.hbm.xml（第二种方式）
+
+		<mapping resource="cn/itcast/a_primer/Customer.hbm.xml"/>&ndash;&gt;
+	</session-factory>-->
+
 
 </hibernate-configuration>

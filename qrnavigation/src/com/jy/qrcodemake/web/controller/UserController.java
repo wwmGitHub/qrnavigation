@@ -6,12 +6,14 @@ import com.jy.qrcodemake.model.UserModel;
 import com.jy.qrcodemake.service.ProductServiceI;
 import com.jy.qrcodemake.service.UserServiceI;
 import com.jy.qrcodemake.util.GlobalFunc;
+import com.jy.qrcodemake.util.Unid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -57,41 +59,72 @@ public class UserController extends BaseController {
 	}
 
     /**
-     * 用户创建(注册)操作
-     * @param request
-     * @param session
-     * @return
-     */
-    @RequestMapping("/register")
-    public String register(HttpServletRequest request, HttpSession session){
-        //获取表单中用户创建信息
-        String userLoginName = GlobalFunc.toString(request.getParameter("userLoginName"));
-        String userLoginPass = GlobalFunc.toString(request.getParameter("userLoginPass"));
-        //-------------
-        if (userLoginName!=null&&userLoginName!=""&&userLoginPass!=null&&userLoginPass!="") {
-            //封装数据到userModel
-            User user = new User();
-            user.setUserLoginName(userLoginName);
-            user.setUserLoginPass(userLoginPass);
-            userService.creatUser(user);
-        }
-
-        //System.out.println("debugger调试用");
-
-        //跳转到系统登陆之后的页面
-        //TODO  用户创建 景区信息页面
-        return "XXXXXX";
-    }
-
-    /**
      * 获取账户list
      * @return
      */
-    @ResponseBody
     @RequestMapping("/getuserlist")
-    public List<UserModel> getUserList(){
-        List<UserModel> userList = userService.getUserList();
-        return userList;
+    public String getUserList(HttpServletRequest request, HttpSession session){
+		String userLoginName = GlobalFunc.toString(session.getAttribute("userLoginName"));
+		String userLoginPass = GlobalFunc.toString(session.getAttribute("userLoginPass"));
+        List<UserModel> userList = userService.getUserList(userLoginName,userLoginPass);
+		session.setAttribute("userList",userList);
+        return "/product/qrcode_list";
     }
 
+	/**
+	 * 修改  find user
+	 * @param request
+	 * @param session
+     * @return
+     */
+	@ResponseBody
+	@RequestMapping("/finduser")
+	public UserModel findUserById(HttpServletRequest request ,HttpSession session){
+		String userId = request.getParameter("userId");
+		UserModel userModel = userService.findUserById(userId,null,null,null);
+		session.setAttribute("userModel",userModel);
+		return userModel;
+	}
+
+	/**
+	 * 创建用户
+	 * 保存 修改之后的账号信息
+	 * @param request
+	 * @param session
+	 * @param response
+     * @return
+     */
+	@ResponseBody
+	@RequestMapping("/saveuser")
+	public Integer saveUser(HttpServletRequest request , HttpSession session, HttpServletResponse response){
+		String userLoginName = GlobalFunc.toString(request.getParameter("userName"));
+		String userLoginPass = GlobalFunc.toString(request.getParameter("userPassWord"));
+		try {
+			Integer integer = userService.saveUser(userLoginName, userLoginPass);
+			return integer;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * After the user information and qr code data are searched,
+	 * user information and qr code data are displayed on the page
+	 * 重定向 到二维码查询操作
+	 * @param
+	 * @param request
+	 * @param response
+	 * @param session
+     * @return
+     */
+	@RequestMapping("/findcommonsuser")
+	public String findUser(HttpServletRequest request,HttpServletResponse response,HttpSession session){
+		String userLoginName = GlobalFunc.toString(request.getParameter("userLoginName"));
+		String userLoginPass = GlobalFunc.toString(request.getParameter("userLoginPass"));
+		UserModel userModel=userService.findUserById(null,null,userLoginName,userLoginPass);
+		session.setAttribute("commonsUser",userModel);
+		// 查找对应二维码操作
+		return "redirect:/productController/productcode";
+	}
 }

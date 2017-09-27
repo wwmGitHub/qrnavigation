@@ -107,7 +107,7 @@
     width:270px;
     height:159px;
 }
-/*Æ·ÅÆ½éÉÜ*/
+/*Æ·ï¿½Æ½ï¿½ï¿½ï¿½*/
 .qk-banner .brand-intro{
     position:absolute;
     right:0;
@@ -126,7 +126,7 @@
 .qk-banner .brand-intro .maxim{font-size:26px;padding:40px 0 15px;}
 .qk-banner .brand-intro .info{font-size:18px;padding-top:5px;}
 .qk-banner .brand-intro .intro-video{margin-top:30px;}
-/*ÍøÕ¾ÓÅÊÆ½éÉÜ*/
+/*ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½*/
 .web-adva-box{background:#fff;}
 .web-adva-box .web-adva{border-bottom:1px solid #e5e5e5;}
 .web-adva-box .web-adva dl{
@@ -147,7 +147,7 @@
 .web-adva-box .web-adva dt.serve{background-position:-239px -150px;}
 .web-adva-box .web-adva dd>strong{display:block;font-weight:bold;color:#000;font-size:20px;padding-bottom:8px;}
 .web-adva-box .web-adva dd>span{color:#888;}
-/*ÍøÕ¾Ä£¿éÖÖÀà*/
+/*ï¿½ï¿½Õ¾Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .web-adva-box .web-module-box{margin-right:-30px;padding:31px 0 33px;}
 .web-module-box .web-module{
     position:relative;
@@ -217,7 +217,7 @@
 .web-module-box .web-module.ppt a:hover strong,.web-module-box .web-module.ppt a:hover dd{color:#ffc000;}
 .web-module-box .web-module.ill a:hover strong,.web-module-box .web-module.ill a:hover dd{color:#0ca02b;}
 
-/*°å¿éÍÆ¼ö*/
+/*ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½*/
 .qk-index-wrapper{background:#f4f4f4;padding-bottom:27px;}
 .imgRecom-box h2{
     position:relative;
@@ -250,7 +250,7 @@
 .modelRecom-box h2 .check-more:hover i{background-position:-230px -206px;}
 .pptRecom-box h2 .title:hover,.pptRecom-box h2 .check-more:hover{color:#fed77d;}
 .pptRecom-box h2 .check-more:hover i{background-position:-199px -206px;}
-/*°å¿é±êÌâÍ¼±ê*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½*/
 .imgRecom-box h2 em.mod-icon{
     width:24px;
     height:25px;
@@ -262,9 +262,9 @@
 .bgRecom-box h2 em.mod-icon{background-position:-40px -235px;}
 .modelRecom-box h2 em.mod-icon{background-position:-91px -235px;}
 .pptRecom-box h2 em.mod-icon{background-position:-135px -235px;}
-/*Í¼Æ¬ÍÆ¼ö°´Å¥ÑùÊ½*/
+/*Í¼Æ¬ï¿½Æ¼ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ê½*/
 .bgpic-list-small .hover-content .fav{padding-right: 0px; padding-left: 2px; text-align: left;}
-/*Ãâ¿ÙÔªËØÓë±³¾°¹Ø¼ü´Ê*/
+/*ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ë±³ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½*/
 .box-wrapper .hotwords-body{
 	position:relative;
 	width:214px;
@@ -308,7 +308,7 @@
 .hotwords-body .bgwords-icon{
 	background-position:-7px -63px;
 }
-/*Í¼Æ¬ÍÆ¼öÍ¨ÓÃ*/
+/*Í¼Æ¬ï¿½Æ¼ï¿½Í¨ï¿½ï¿½*/
 
 .img-hover-animate li:hover{
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
@@ -317,7 +317,7 @@
     -o-transform:translate3d(0, -2px, 0);
     transform: translate3d(0, -2px, 0);
 }
-/*ÕÚ¸Ç²ã*/
+/*ï¿½Ú¸Ç²ï¿½*/
 .img-hover-animate li .img-show .mask-tier,.img-hover-animate li .img-box .mask-tier{
     position: absolute;
     left: 0;
@@ -330,11 +330,11 @@
     display: none;
 }
 .img-hover-animate li:hover .img-show .mask-tier,.img-hover-animate li:hover .img-box .mask-tier{display:block;}
-/*pngÍ¼Æ¬ÍÆ¼ö*/
+/*pngÍ¼Æ¬ï¿½Æ¼ï¿½*/
 .png-word ul li:hover a{
 	color:#0063ca;
 }
-/*pngÍ¼Æ¬ÁÐ±í*/
+/*pngÍ¼Æ¬ï¿½Ð±ï¿½*/
 .pngRecom-box .png-list ul{
 	margin-right:-32px;
 }
@@ -392,7 +392,7 @@
     transition: all .2s;
     color:#333;
 }
-/*pngÕ¹Ê¾µ×²¿ÒõÓ°*/
+/*pngÕ¹Ê¾ï¿½×²ï¿½ï¿½ï¿½Ó°*/
 .png-list li .shadow-b {
     width: 275px;
     height: 10px;
@@ -401,8 +401,8 @@
     left: 0;
     background: url(../images/pngShadow.png) no-repeat center;
 }
-/*±³¾°Í¼Æ¬ÍÆ¼ö*/
-/*±³¾°Í¼Æ¬Õ¹Ê¾Í¨ÓÃ*/
+/*ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Æ¼ï¿½*/
+/*ï¿½ï¿½ï¿½ï¿½Í¼Æ¬Õ¹Ê¾Í¨ï¿½ï¿½*/
 .bg-img-wrapper li:hover .img-title{bottom:0px;}
 .bg-img-wrapper li .img-title .title{
     padding-left:25px;
@@ -431,7 +431,7 @@
 }
 .bg-img-wrapper li:hover .img-box .hover-content{top: 10px;}
 .bg-word ul li:hover a{color:#e11408;}
-/*±³¾°´óÍ¼Æ¬ÁÐ±í*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ð±ï¿½*/
 .bgLevel-wrapper{margin-right:-28px;}
 .bgLevel-wrapper .bg-list-level{
     width:584px;
@@ -465,7 +465,7 @@
     left: 0;
     background: url(../images/bgShadow.png) no-repeat center;
 }
-/*ºáÍ¼¼Ð×ÓÑùÊ½*/
+/*ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 .img-box .bg-proto .clamp-img {
     position: absolute;
     width: 21px;
@@ -492,7 +492,7 @@
 .bg-img-wrapper .img-box .bg-proto .clamp-r{
     right:53px;
 }
-/*±³¾°Ð¡Í¼Æ¬ÁÐ±í*/
+/*ï¿½ï¿½ï¿½ï¿½Ð¡Í¼Æ¬ï¿½Ð±ï¿½*/
 .bgVertical-wrapper{margin-right:-30px;}
 .bgVertical-wrapper li{
     width:380px;
@@ -529,7 +529,7 @@
     left: 0;
     background: url(../images/vbgShadow.png) no-repeat center;
 }
-/*Ä£°åÍ¼Æ¬ÁÐ±í*/
+/*Ä£ï¿½ï¿½Í¼Æ¬ï¿½Ð±ï¿½*/
 .model-list{margin-right:-30px;}
 .model-list-img{
     position:relative;
@@ -583,7 +583,7 @@
     left: 0;
     background: url(../images/vbgShadow.png) no-repeat center;
 }
-/*Ä£°åÏÂÔØ°´Å¥*/
+/*Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥*/
 .hover-content-model{display:none;}
 .model-list li:hover .hover-content-model{display:block;}
 .hover-content-model a{
@@ -628,7 +628,7 @@
 .hover-content-model a.collect.on{color:#fe7322;;background-position:-315px -222px;}
 .wp-model-list .hover-content-model a.collect.on{color:#ffc000;background-position:-315px -279px;}
 
-/*ÐÄÏµÇ§¿â*/
+/*ï¿½ï¿½ÏµÇ§ï¿½ï¿½*/
 .fans-heartBox{background:#f4f4f4;padding-bottom:30px;}
 .fans-heartBox h3{
     font-size:30px;
@@ -727,7 +727,7 @@
     padding-top:20px;
     padding-left:20px;
 }
-/*ÊÓÆµÑùÊ½¿ªÊ¼*/
+/*ï¿½ï¿½Æµï¿½ï¿½Ê½ï¿½ï¿½Ê¼*/
 /*video-play*/
 .modal-scrollable {
     position: fixed;
@@ -755,7 +755,7 @@
     border: 1px solid rgba(0,0,0,0.3);
     z-index: 1061;
 }
-/* ÊÓÆµµ¯´°¹Ø±Õ°´Å¥ */
+/* ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õ°ï¿½Å¥ */
 .indexvideo-close{ position:absolute; right:0; top:0; width:40px; height:30px; line-height:30px; text-align:center; font-size:16px; background:#ddd; color:#333; cursor:pointer; z-index:9}
 .jp-audio *:focus,
 .jp-audio-stream *:focus,
@@ -770,16 +770,16 @@
   cursor: pointer;
   background-color: transparent;
   /* Makes IE9 work with the active area over the whole video area. IE6/7/8 only have the button as active area. */ }
-/*ÊÓÆµÑùÊ½½áÊø*/
+/*ï¿½ï¿½Æµï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½*/
 
-/*Ç©µ½css start*/
+/*Ç©ï¿½ï¿½css start*/
 .signIn-gift-public{
     position: absolute;
     top:50%;
     left:50%;
     z-index:9999;
 }
-/*Ç©µ½µ¯´°*/
+/*Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .signIn-gift-wd{
     width:592px;
     height:654px;
@@ -787,7 +787,7 @@
     margin-top:-327px;
     background:url(../images/signIn-bg.png) no-repeat center;
 }
-/*Ç©µ½³É¹¦µ¯´°*/
+/*Ç©ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .signIn-gift-suc{
     width:592px;
     height:494px;
@@ -795,7 +795,7 @@
     margin-top:-247px;
     background:url(../images/signIn-sucbg.png) no-repeat center;
 }
-/*±¦Ïä*/
+/*ï¿½ï¿½ï¿½ï¿½*/
 .signIn-treasure {
     width:668px;
     height:552px;
@@ -1036,10 +1036,10 @@
     50%{transform:rotate(0deg)}
     100%{transform:rotate(10deg)}
 }
-/*Ç©µ½css end*/
+/*Ç©ï¿½ï¿½css end*/
 
 
-/*°´Å¥Í¨ÓÃÑùÊ½*/
+/*ï¿½ï¿½Å¥Í¨ï¿½ï¿½ï¿½ï¿½Ê½*/
 .hover-content .fav, .hover-content .favon {
     background: url(http://js.588ku.com/comp/public/images/base-icon.png) no-repeat -96px -186px #f3f2f2;
     float:left;
@@ -1048,6 +1048,7 @@
     background: url(http://js.588ku.com/comp/public/images/base-icon.png) no-repeat -94px -153px #f3f2f2;
     float:left;
     border-radius: 2px;
+    background-image: url("/img/shangchu.png");
 }
 .img-show .hover-content .down-big-img:hover{
     background-color:#0179f2;
@@ -1098,8 +1099,8 @@
 .hover-content .down-big-img i{
     background: url(http://js.588ku.com/comp/public/images/base-icon.png) -101px -227px no-repeat ;
 }
-/*20170704×ó²à±ßÀ¸*/
-/*×ó²à±ßÀ¸*/
+/*20170704ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .left-slide-bar{
 	position:fixed;
 	width:88px;

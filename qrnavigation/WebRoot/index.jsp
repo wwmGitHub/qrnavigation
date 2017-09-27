@@ -29,13 +29,27 @@
 			alert('请输入登录密码！');return;
 		}
 		var pwd =  $('#userLoginPass').attr("value");
-		$.post('${pageContext.request.contextPath}/userController/login', form.serialize(), function(result) {
-			var ss = JSON.parse(result);
-			if(ss.success){
-                /*成功登陆之后    即可访问list.acton  加载景区信息列表 (功能未作)*/
-				window.location.href = '${pageContext.request.contextPath}/productController/list'
-			}
-		});
+		if (name!="admin" && pass!="admin"){
+			/*景区普通账号*/
+			$.post('${pageContext.request.contextPath}/userController/login', form.serialize(), function(result) {
+				var ss = JSON.parse(result);
+				if(ss.success){
+					/*成功登陆之后    即可访问景区信息平台页面 commonuser.jsp*/
+
+					window.location.href = "${pageContext.request.contextPath}/userController/findcommonsuser?userLoginName="+name+"&userLoginPass="+pass+""
+				}
+			});
+		}else {
+			/*系统用户*/
+			$.post('${pageContext.request.contextPath}/userController/login', form.serialize(), function(result) {
+				var ss = JSON.parse(result);
+				if(ss.success){
+
+					window.location.href = "${pageContext.request.contextPath}/productController/list?userLoginName="+name+"&userLoginPass="+pass+""
+				}
+			});
+		}
+
 	}
 	
 	function keydown(){

@@ -1,9 +1,7 @@
 package com.jy.qrcodemake.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "user", catalog = "qrcodemake")
@@ -12,6 +10,7 @@ public class User implements java.io.Serializable {
 	private String userId;
 	private String userLoginName;
 	private String userLoginPass;
+	private Product product;
 	/** default constructor */
 	public User() {
 	}
@@ -31,7 +30,10 @@ public class User implements java.io.Serializable {
 	}
 
 	// Property accessors
+	//@GeneratedValue(strategy=GenerationType.AUTO) id生成策略相当于hibernate中的native
+
 	@Id
+	@GeneratedValue//主键id自动生成 相当于[配置中的主键生成策略]
 	@Column(name = "user_id", unique = true, nullable = false, length = 50)
 	public String getUserId() {
 		return this.userId;
@@ -57,5 +59,29 @@ public class User implements java.io.Serializable {
 
 	public void setUserLoginPass(String userLoginPass) {
 		this.userLoginPass = userLoginPass;
+	}
+
+	/**
+	 *配置关联关系
+	 * @return
+     */
+	/*
+	@ManyToOne           //多的一端加入关联关键 ，
+    @JoinColumn(name="classesid")  关联对象的主键
+    public Classes getClasses() {  关联对象
+        return classes;
+    }
+    public void setClasses(Classes classes) {
+        this.classes = classes;
+    }
+	* */
+	@OneToOne
+	@JoinColumn(name="product_id")
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }

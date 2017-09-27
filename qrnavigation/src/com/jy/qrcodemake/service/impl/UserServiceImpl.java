@@ -5,10 +5,12 @@ import com.jy.qrcodemake.dao.CdcPlatformBaseDaoI;
 import com.jy.qrcodemake.entity.User;
 import com.jy.qrcodemake.model.UserModel;
 import com.jy.qrcodemake.service.UserServiceI;
+import com.jy.qrcodemake.util.Unid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,10 +46,8 @@ public class UserServiceImpl implements UserServiceI{
      */
     @Override
     public void creatUser(User user) {
-        //将user数据copy到userModel
-        UserModel um = new UserModel();
-        BeanUtils.copyProperties(user, um);
-        cdcDao.createModel(um);
+
+        cdcDao.createModel(user);
     }
 
     /**
@@ -55,18 +55,18 @@ public class UserServiceImpl implements UserServiceI{
      * @return
      */
     @Override
-    public List<UserModel> getUserList() {
+    public List<UserModel> getUserList(String username,String password) {
         List<User> list= baseDaoI.find("from User");
         List<UserModel> umList=new ArrayList<>();
         //过滤系统账号
         ListIterator iterator=list.listIterator();
         while (iterator.hasNext()){
-            System.out.println(iterator.next());
+//            System.out.println(iterator.next());
             User  user= (User) iterator.next();
-            if (user.getUserLoginName().equals("admin")){
+            if (user.getUserLoginName().equals(username)){
                 iterator.remove();
             }
-            if (user!=null) {
+            if (user!=null&&!user.getUserLoginName().equals(username)) {
                 UserModel u = new UserModel();
                 BeanUtils.copyProperties(user, u);
                 umList.add(u);
@@ -75,4 +75,71 @@ public class UserServiceImpl implements UserServiceI{
 
         return umList;
     }
+
+    /**
+     * find   修改操作时用
+     * @param id
+     * @return
+     */
+    @Override
+    public UserModel findUserById(String id,UserModel um,String username,String password) {
+        if (id!=null){
+            String hql="from User where userId='"+id+"'";
+            User user = (User) baseDaoI.get(hql);
+            //user转换成model对象
+            if(user!=null&&!user.getUserLoginName().equals("")) {
+                UserModel u = new UserModel();
+                BeanUtils.copyProperties(user, u);
+                return u;
+            }
+        }
+        if (um!=null){
+            String hql="from User where user_login_name='"+um.getUserLoginName()+"' user_login_pass='"+um.getUserLoginPass()+"'";
+            User user = (User) baseDaoI.get(hql);
+            if (user!=null){
+                UserModel u = new UserModel();
+                BeanUtils.copyProperties(user, u);
+                return u;
+
+            }
+        }
+        if (username!=null&&!username.equals("")&&password!=null&&!password.equals("")){
+            String hql="from User where user_login_name='"+username+"' and user_login_pass='"+password+"'";
+            User user = (User) baseDaoI.get(hql);
+            if (user!=null){
+                UserModel u = new UserModel();
+                BeanUtils.copyProperties(user, u);
+                return u;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 保存  修改之后的账号信息
+     * @param userName
+     * @param userPsss
+     * @return
+     */
+    @Override
+    public Integer saveUser(String userName, String userPsss)throws Exception {
+        User user = new User();
+        user.setUserId(Unid.GetUnidO());
+        user.setUserLoginName(userName);
+        user.setUserLoginPass(userPsss);
+        String uuid= (String) baseDaoI.save(user);
+        if (uuid.isEmpty()&&uuid.equals("")){
+            return 1;
+        }
+        return null;
+
+    }
+
+    @Override
+    public UserModel findUser(UserModel um) throws Exception {
+
+        return null;
+    }
+
+
 }

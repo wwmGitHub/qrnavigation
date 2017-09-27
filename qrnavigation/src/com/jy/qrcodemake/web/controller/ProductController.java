@@ -3,6 +3,7 @@ package com.jy.qrcodemake.web.controller;
 import com.jy.qrcodemake.entity.Product;
 import com.jy.qrcodemake.model.ProductModel;
 import com.jy.qrcodemake.service.ProductServiceI;
+import com.jy.qrcodemake.util.GlobalFunc;
 import com.jy.qrcodemake.util.Unid;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
@@ -32,8 +33,10 @@ public class ProductController extends BaseController {
      * @param request
      * @return
      */
-    @RequestMapping("list")
+    @RequestMapping("/list")
 	public String list(HttpSession session,HttpServletRequest request){
+		String userLoginName = GlobalFunc.toString(request.getParameter("userLoginName"));
+		String userLoginPass = GlobalFunc.toString(request.getParameter("userLoginPass"));
 		List<Product> productList = productService.listProduct();
 		List<ProductModel> pmList = new ArrayList<ProductModel>();
 		String path = session.getServletContext().getRealPath("/")+"product\\";
@@ -60,15 +63,34 @@ public class ProductController extends BaseController {
 			pm.setQrcodeLink(realPath+"/product/"+filename.substring(0,filename.indexOf("."))+".png");//单独设置生成二维码内容的链接
 			pmList.add(pm);
 		}
-		request.setAttribute("productList", pmList);
-		return "/product/qrcode_list";
+		session.setAttribute("productList", pmList);
+		session.setAttribute("userLoginName", userLoginName);
+		session.setAttribute("userLoginPass", userLoginPass);
+		//return "/product/qrcode_list";
+		return "redirect:/userController/getuserlist";
 	}
+
+	/**
+	 *二维码添加页面
+	 * @param session
+	 * @param request
+     * @return
+     */
 	@RequestMapping("/addPage")
 	public String addPage(HttpSession session,HttpServletRequest request) {
 		
 		
 		return "/product/qrcode_add";
 	}
+
+	/**
+	 * 添加二维码操作
+	 * @param request
+	 * @param mfile
+	 * @param scenicspot_name
+	 * @return
+     * @throws IOException
+     */
 	@RequestMapping("/add")
 	public String add(HttpServletRequest request,@RequestParam("files")MultipartFile[] mfile,@RequestParam("scenicspot_name")String scenicspot_name) throws IOException{
 		String scenicspotName = scenicspot_name;//GlobalFunc.toString(request.getParameter("scenicspot_name"));
@@ -137,7 +159,13 @@ public class ProductController extends BaseController {
 		productService.createProduct(product);;
 		return "redirect:/productController/list";
 	}
-	
+
+	/**
+	 * 删除二维码操作
+	 * @param session
+	 * @param request
+     * @return
+     */
 	@RequestMapping("/delete")
 	public String delete(HttpSession session,HttpServletRequest request) {
 		String id = request.getParameter("id");
@@ -161,7 +189,14 @@ public class ProductController extends BaseController {
 	public String modifyPage(HttpSession session,HttpServletRequest request) {
 		return "product/qrcode_modify";
 	}
-	
+
+	/**
+	 * 下载二维码
+	 * @param session
+	 * @param request
+	 * @param response
+     * @return
+     */
 	@RequestMapping("/export_png")
 	public String export_png(HttpSession session, HttpServletRequest request,HttpServletResponse response) {
 		try{
@@ -199,5 +234,55 @@ public class ProductController extends BaseController {
 		}
 
 		return null;
+	}
+
+	/**
+	 * 获取景区二维码信息单个
+	 * @param session
+	 * @param request
+	 * @param response
+     * @return
+     */
+	@RequestMapping("/productcode")
+	public String getProductCode(HttpSession session, HttpServletRequest request,HttpServletResponse response){
+		try {
+			Product product = productService.loadProduct(null);
+
+			List<ProductModel> pmList = new ArrayList<ProductModel>();
+			String path = session.getServletContext().getRealPath("/")+"product\\";
+			String realPath = "http://"+ request.getServerName()+ ":"+ request.getServerPort()+ request.getContextPath();
+			System.out.println(realPath);
+			System.out.println(path);
+
+				ProductModel pm = new ProductModel();
+				BeanUtils.copyProperties(product, pm);
+
+				//重新生成所有的qrcode
+				String filename = pm.getScenicspotLink();
+				ByteArrayOutputStream out = QRCode.from(realPath + "/product/" + pm.getScenicspotLink()).withSize(255, 255).to(ImageType.PNG).stream();
+
+
+				FileOutputStream fount = new FileOutputStream(new File(path + filename.substring(0, filename.indexOf(".")) + ".png"));
+				fount.write(out.toByteArray());
+				fount.flush();
+				fount.close();
+
+
+				//单独生成二维码里链接
+				pm.setQrcodeLink(realPath+"/product/"+filename.substring(0,filename.indexOf("."))+".png");
+				pmList.add(pm);
+
+
+			session.setAttribute("commonList", pmList);
+			return "/product/commonuser";
+		} catch (FileNotFoundException file) {
+
+		}catch (IOException ioe){
+
+		}catch (Exception e){
+
+		}
+		return null;
+
 	}
 }
